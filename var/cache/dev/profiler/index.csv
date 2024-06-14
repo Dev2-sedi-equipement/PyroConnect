@@ -1,0 +1,17 @@
+65de26,127.0.0.1,GET,http://127.0.0.1:8000/vrp,1718352443,,200,request
+362cd5,127.0.0.1,GET,http://127.0.0.1:8000/build/images/Pyro_Connect-removebg-preview.png,1718352443,45d017,404,request
+45d017,127.0.0.1,GET,http://127.0.0.1:8000/build/images/Pyro_Connect-removebg-preview.png,1718352443,,404,request
+1d0954,127.0.0.1,GET,http://127.0.0.1:8000/vrp,1718352445,,200,request
+14ba4d,127.0.0.1,GET,http://127.0.0.1:8000/build/images/Pyro_Connect-removebg-preview.png,1718352445,de56c5,404,request
+de56c5,127.0.0.1,GET,http://127.0.0.1:8000/build/images/Pyro_Connect-removebg-preview.png,1718352445,,404,request
+d330d9,127.0.0.1,GET,http://127.0.0.1:8000/vrp,1718352470,,200,request
+3743f2,127.0.0.1,GET,http://127.0.0.1:8000/build/images/Pyro_Connect-removebg-preview.png,1718352471,77c447,404,request
+77c447,127.0.0.1,GET,http://127.0.0.1:8000/build/images/Pyro_Connect-removebg-preview.png,1718352471,,404,request
+ee2f7d,127.0.0.1,GET,http://127.0.0.1:8000/vrp,1718352489,,200,request
+fbf4f5,127.0.0.1,GET,http://127.0.0.1:8000/vrp,1718352546,,200,request
+bc3493,127.0.0.1,GET,http://127.0.0.1:8000/vrp,1718352550,,200,request
+23efe7,127.0.0.1,GET,http://127.0.0.1:8000/vrp,1718352550,,200,request
+91e50f,127.0.0.1,GET,http://127.0.0.1:8000/dossiers/findAllTraiteDossiersVrp,1718352553,,200,request
+23d5c3,127.0.0.1,GET,http://127.0.0.1:8000/dossiers/findAllEnCoursDeTraitementVrp,1718352553,,200,request
+1280e8,127.0.0.1,GET,http://127.0.0.1:8000/dossiers/findAllNonTraiteVrp,1718352554,,200,request
+f10b41,127.0.0.1,GET,http://127.0.0.1:8000/dossiers/findAllDossiersVrp,1718352557,,200,request

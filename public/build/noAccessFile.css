@@ -1,0 +1,36 @@
+/*!******************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].oneOf[1].use[1]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[4].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].oneOf[1].use[3]!./assets/styles/pages/noAccessFile.scss ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************/
+@charset "UTF-8";
+/* Style pour le fond assombri */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Couleur de fond assombrie avec transparence */
+  z-index: 999; /* Z-index élevé pour s'assurer que l'overlay est au-dessus de tout le contenu */
+}
+
+/* Style pour l'alerte */
+.alert-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Ombre autour de l'alerte */
+  z-index: 1000; /* Z-index plus élevé que l'overlay pour s'assurer que l'alerte est au-dessus */
+}
+
+.lost-connexion-h3 {
+  font-family: montserrat, sans-serif;
+  color: #fff;
+  text-shadow: 0 2px 0 #8400ff;
+  margin: 0;
+}
+
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibm9BY2Nlc3NGaWxlLmNzcyIsIm1hcHBpbmdzIjoiOzs7QUFBQSxnQkFBZ0I7QUFBaEI7QUFDQTtFQUNJO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0FBRUo7O0FBQ0E7QUFDQTtFQUNJO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtBQUVKOztBQUNBO0VBQ0k7RUFFRjtFQUNBO0VBQ0E7QUFDRixDIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vLy4vYXNzZXRzL3N0eWxlcy9wYWdlcy9ub0FjY2Vzc0ZpbGUuc2NzcyJdLCJzb3VyY2VzQ29udGVudCI6WyIvKiBTdHlsZSBwb3VyIGxlIGZvbmQgYXNzb21icmkgKi9cbi5vdmVybGF5IHtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiAwO1xuICAgIGxlZnQ6IDA7XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgaGVpZ2h0OiAxMDAlO1xuICAgIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMCwgMCwgMCwgMC41KTsgLyogQ291bGV1ciBkZSBmb25kIGFzc29tYnJpZSBhdmVjIHRyYW5zcGFyZW5jZSAqL1xuICAgIHotaW5kZXg6IDk5OTsgLyogWi1pbmRleCDDqWxldsOpIHBvdXIgcydhc3N1cmVyIHF1ZSBsJ292ZXJsYXkgZXN0IGF1LWRlc3N1cyBkZSB0b3V0IGxlIGNvbnRlbnUgKi9cbn1cblxuLyogU3R5bGUgcG91ciBsJ2FsZXJ0ZSAqL1xuLmFsZXJ0LWNvbnRhaW5lciB7XG4gICAgcG9zaXRpb246IGZpeGVkO1xuICAgIHRvcDogNTAlO1xuICAgIGxlZnQ6IDUwJTtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZSgtNTAlLCAtNTAlKTtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcbiAgICBwYWRkaW5nOiAyMHB4O1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBib3gtc2hhZG93OiAwcHggMHB4IDEwcHggcmdiYSgwLCAwLCAwLCAwLjUpOyAvKiBPbWJyZSBhdXRvdXIgZGUgbCdhbGVydGUgKi9cbiAgICB6LWluZGV4OiAxMDAwOyAvKiBaLWluZGV4IHBsdXMgw6lsZXbDqSBxdWUgbCdvdmVybGF5IHBvdXIgcydhc3N1cmVyIHF1ZSBsJ2FsZXJ0ZSBlc3QgYXUtZGVzc3VzICovXG59XG4gICBcbi5sb3N0LWNvbm5leGlvbi1oM3tcbiAgICBmb250LWZhbWlseTogbW9udHNlcnJhdCxzYW5zLXNlcmlmO1xuXG4gIGNvbG9yOiAjZmZmO1xuICB0ZXh0LXNoYWRvdzogMCAycHggMCAjODQwMGZmO1xuICBtYXJnaW46IDA7XG59Il0sIm5hbWVzIjpbXSwic291cmNlUm9vdCI6IiJ9*/

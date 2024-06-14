@@ -2,72 +2,125 @@
   "entrypoints": {
     "app": {
       "js": [
-        "/build/runtime.js"
+        "/build/runtime.js",
+        "/build/vendors-node_modules_core-js_internals_define-built-in_js.js",
+        "/build/vendors-node_modules_core-js_internals_classof_js-node_modules_core-js_internals_export_js.js",
+        "/build/vendors-node_modules_core-js_internals_add-to-unscopables_js-node_modules_core-js_modules_es_-eb8fb3.js",
+        "/build/vendors-node_modules_core-js_internals_a-constructor_js-node_modules_core-js_internals_string-24650e.js",
+        "/build/vendors-node_modules_hotwired_turbo_dist_turbo_es2017-umd_js-node_modules_symfony_stimulus-br-fd16a4.js",
+        "/build/app.js"
+      ],
+      "css": [
+        "/build/app.css"
       ]
     },
     "adminUser": {
       "js": [
-        "/build/runtime.js"
+        "/build/runtime.js",
+        "/build/adminUser.js"
+      ],
+      "css": [
+        "/build/adminUser.css"
       ]
     },
     "navbarJs": {
       "js": [
-        "/build/runtime.js"
+        "/build/runtime.js",
+        "/build/vendors-node_modules_core-js_internals_define-built-in_js.js",
+        "/build/vendors-node_modules_core-js_internals_classof_js-node_modules_core-js_internals_export_js.js",
+        "/build/vendors-node_modules_core-js_modules_es_array_for-each_js-node_modules_core-js_modules_es_obj-7bb33f.js",
+        "/build/navbarJs.js"
       ]
     },
     "modifyDossier": {
       "js": [
-        "/build/runtime.js"
+        "/build/runtime.js",
+        "/build/vendors-node_modules_core-js_internals_define-built-in_js.js",
+        "/build/vendors-node_modules_core-js_internals_classof_js-node_modules_core-js_internals_export_js.js",
+        "/build/vendors-node_modules_core-js_modules_es_array_for-each_js-node_modules_core-js_modules_es_obj-7bb33f.js",
+        "/build/vendors-node_modules_core-js_internals_add-to-unscopables_js-node_modules_core-js_modules_es_-eb8fb3.js",
+        "/build/vendors-node_modules_core-js_internals_a-constructor_js-node_modules_core-js_internals_string-24650e.js",
+        "/build/vendors-node_modules_core-js_modules_es_array_concat_js-node_modules_core-js_modules_es_objec-022dc4.js",
+        "/build/modifyDossier.js"
       ]
     },
     "datepicker": {
       "js": [
-        "/build/runtime.js"
+        "/build/runtime.js",
+        "/build/vendors-node_modules_core-js_internals_define-built-in_js.js",
+        "/build/datepicker.js"
       ]
     },
     "navbar": {
       "js": [
-        "/build/runtime.js"
+        "/build/runtime.js",
+        "/build/vendors-node_modules_core-js_internals_define-built-in_js.js",
+        "/build/vendors-node_modules_core-js_internals_classof_js-node_modules_core-js_internals_export_js.js",
+        "/build/vendors-node_modules_core-js_modules_es_array_for-each_js-node_modules_core-js_modules_es_obj-7bb33f.js",
+        "/build/navbar.js"
       ]
     },
     "personnelTirEdit": {
       "js": [
-        "/build/runtime.js"
+        "/build/runtime.js",
+        "/build/vendors-node_modules_core-js_internals_define-built-in_js.js",
+        "/build/vendors-node_modules_core-js_internals_classof_js-node_modules_core-js_internals_export_js.js",
+        "/build/personnelTirEdit.js"
       ]
     },
     "personnelTir": {
       "js": [
-        "/build/runtime.js"
+        "/build/runtime.js",
+        "/build/vendors-node_modules_core-js_internals_define-built-in_js.js",
+        "/build/vendors-node_modules_core-js_internals_classof_js-node_modules_core-js_internals_export_js.js",
+        "/build/personnelTir.js"
       ]
     },
     "beforeUnload": {
       "js": [
-        "/build/runtime.js"
+        "/build/runtime.js",
+        "/build/beforeUnload.js"
       ]
     },
     "personnelTirArchive": {
       "js": [
-        "/build/runtime.js"
+        "/build/runtime.js",
+        "/build/personnelTirArchive.js"
       ]
     },
     "searchClient": {
       "js": [
-        "/build/runtime.js"
+        "/build/runtime.js",
+        "/build/vendors-node_modules_core-js_internals_define-built-in_js.js",
+        "/build/vendors-node_modules_core-js_internals_classof_js-node_modules_core-js_internals_export_js.js",
+        "/build/vendors-node_modules_core-js_modules_es_array_for-each_js-node_modules_core-js_modules_es_obj-7bb33f.js",
+        "/build/searchClient.js"
       ]
     },
     "createDossier": {
       "js": [
-        "/build/runtime.js"
+        "/build/runtime.js",
+        "/build/vendors-node_modules_core-js_internals_define-built-in_js.js",
+        "/build/vendors-node_modules_core-js_internals_classof_js-node_modules_core-js_internals_export_js.js",
+        "/build/vendors-node_modules_core-js_modules_es_array_for-each_js-node_modules_core-js_modules_es_obj-7bb33f.js",
+        "/build/createDossier.js"
       ]
     },
     "password-visible": {
       "js": [
-        "/build/runtime.js"
+        "/build/runtime.js",
+        "/build/vendors-node_modules_core-js_internals_define-built-in_js.js",
+        "/build/vendors-node_modules_core-js_internals_classof_js-node_modules_core-js_internals_export_js.js",
+        "/build/vendors-node_modules_core-js_internals_add-to-unscopables_js-node_modules_core-js_modules_es_-eb8fb3.js",
+        "/build/password-visible.js"
       ]
     },
     "noAccessFile": {
       "js": [
         "/build/runtime.js"
+      ],
+      "css": [
+        "/build/noAccessFile.css"
       ]
     }
   }
