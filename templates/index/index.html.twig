@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello IndexController!{% endblock %}
+
+
+{% block body  %}
+
+    {% include 'Component/navbar/Desktop/navbar.html.twig' %}
+    {% include 'Component/navbar/Mobile/navbar.html.twig' %}
+
+    
+ 
+        <section class="content-sf mt-4 " style=" "data-turbo="true">
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+            
+   
+        {% include 'Component/optionsSF.html.twig' %}
+
+        
+
+
+        {% include 'lost_wifi/index.html.twig' %}
+
+
+        <p id="noDossierFound"class="pt-3 text-white text-center mt-3 fs-3  d-none">Aucun dossier disponible.</p>
+
+
+        </section>
+
+
+
+
+
+
+{# <script>
+    function handleSpanClick(event) {
+        event.preventDefault(); // Empêche la redirection
+        const tooltipText = event.target.querySelector('.tooltiptext'); // Récupère l'élément tootiptext à partir de l'événement
+        tooltipText.classList.add('visible'); // Ajoute la classe 'visible' pour rendre le tooltip visible
+
+        // Supprime la classe 'visible' après 3 secondes
+        setTimeout(function() {
+            tooltipText.classList.remove('visible');
+        }, 3000); // 3000 millisecondes = 3 secondes
+    }
+</script> #}
+
+{# <style>
+    /* Tooltip container */
+    .tooltip-container {
+        position: relative;
+        display: inline-block;
+    }
+
+    /* Tooltip text */
+    .tooltip2 .tooltiptext {
+        visibility: hidden;
+        width: 120px;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        padding: 5px 0;
+        border-radius: 6px;
+        
+        /* Position the tooltip text */
+        position: absolute;
+        z-index: 1;
+        top: -30px; /* Adjust this value as needed */
+
+    }
+
+    /* Show the tooltip text when you mouse over the tooltip container */
+    .tooltip2:hover .tooltiptext {
+        visibility: visible;
+    }
+</style> #}
+{% endblock %}

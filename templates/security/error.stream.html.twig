@@ -1,0 +1,32 @@
+<turbo-stream action="prepend" target="formLogin">
+    <template>
+        {% if error is defined %}
+            <div class="alert alert-danger">
+            {{ error.messageKey|trans({}, 'security') }}
+
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endif %}
+
+        <script>
+            const formLogin = document.querySelector('#formLogin');
+                if (formLogin !== null || formLogin !== 'undefined') {
+
+                formLogin.addEventListener('turbo:submit-end', function (event) {
+                    // Sélectionner le premier élément avec la classe .alert-danger
+                    const alertDanger = formLogin.querySelector('.alert');
+
+                    // Vérifier si un élément .alert-danger a été trouvé
+                    if (alertDanger) {
+                        // Supprimer l'élément .alert-danger
+                        alertDanger.remove();
+                    }
+                });
+            }
+            
+        </script>
+
+        
+    </template>
+</turbo-stream>
+

@@ -1,0 +1,16 @@
+    <body class="h-100">
+        
+      <div class="d-flex justify-content-center flex-wrap ">
+        <a href="{{ path('app_index') }}" class="btn btn-options m-2 btn-secondary" data-turbo-stream >Tous les dossiers</a>
+        <a href="{{ path('app_index', {'tri': 'traites'}) }}" class="btn btn-options m-2 btn-success" data-turbo-stream >Dossier Traité</a>
+        <a href="{{ path('app_index', {'tri': 'en_cours'}) }}" class="btn btn-options m-2 btn-warning" data-turbo-stream >Dossier en cours de traitement</a>
+        <a href="{{ path('app_index', {'tri': 'non_traites'}) }}" class="btn btn-options m-2 btn-danger" data-turbo-stream >Dossier non traité</a>
+    </div>
+
+    <div class="d-flex justify-content-center mb-3">
+        <form action="{{ path('app_vrp') }}" method="GET" id="searchForm"class="form-inline my-2  formSearch d-flex justify-content-center gap-3 mb-3 ">
+            <input class="form-control mr-sm-2" type="search" placeholder="Rechercher des dossiers" aria-label="Search" name="q" id="searchInput">
+        </form>
+    </div>
+    </body>
+

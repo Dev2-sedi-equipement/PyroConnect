@@ -1,0 +1,66 @@
+{# success.stream.html.twig #}
+<turbo-stream action="replace" target="notification_{{ id }}">
+    <template>
+        <div id="notification_{{ id }}" class="alert alert-success mt-5 " role="alert">
+            Notification Supprimée!
+        </div>
+    
+<script>
+    // Wait for 3 seconds before adding the animation classes
+    setTimeout(function() {
+        const notification = document.querySelector("#notification_{{ id }}");
+        if (notification) {
+            notification.classList.add("animate__animated");
+            notification.classList.add("animate__fadeOut");
+
+        }
+ 
+    }, 2000);
+
+    // Wait for 3 seconds and 10 milliseconds before hiding the notification
+    setTimeout(function() {
+        const notification = document.querySelector("#notification_{{ id }}");
+        const container = document.querySelector("#notificationContainer");
+        const noNotification = document.querySelector(".noNotif");
+        if (notification) {
+            notification.classList.add("d-none");
+               
+        }else{
+            if (container && notification) {
+                // If notification_{{id}} still exists, do nothing
+            } else {
+         
+                    noNotification.classList.remove("d-none");
+                    noNotification.classList.add("d-flex");
+
+            }
+        }
+    }, 3010);
+
+
+</script>
+
+
+    </template>
+</turbo-stream>
+
+
+<style>
+    /* CSS */
+    @keyframes fadeOut {
+        from {
+            opacity: 1;
+        }
+        to {
+            opacity: 0;
+        }
+    }
+
+    .animate__fadeOutRight {
+        animation-name: fadeOutRight;
+        animation-duration: 3s; /* Adjust the duration as needed */
+    }
+
+  
+</style>
+

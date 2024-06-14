@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Envoi de l'email de réinitialisation du mot de passe{% endblock %}
+
+{% block body %}
+    <main class="h-100 d-flex align-items-center justify-content-center">
+        <div class="w-90 justify-content-center" id='requestCardMail' style="height: fit-content !important;max-width: 750px;">
+            <div class="p-4"  id='sendMail'>
+                <p class="w-90" style="font-size: 18px;margin: 3rem;">
+                    Si un compte correspondant à votre adresse email existe, alors un email vient d'être envoyé contenant un lien que vous pouvez utiliser pour réinitialiser votre mot de passe.
+                    Ce lien expirera dans {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.<hr>
+                </p>
+                <p class="w-90" style="font-size: 18px;">Si vous ne recevez pas d'email, veuillez vérifier votre dossier de spam ou <a href="{{ path('app_forgot_password_request') }}">réessayer</a>.</p>
+                {# <a href="{{path("app_contact_service_informatique")}}" class="btn btn-primary m-3">Je veux annuler et contacter le service informatique</a> #}
+                <a href="{{path("app_login")}}" class="btn btn-primary m-3">Espace de connexion</a>
+
+
+            </div>
+        </div>
+    </main>
+
+{% endblock %}

@@ -1,0 +1,12 @@
+<turbo-stream action="prepend" target="formRegister">
+    <template>  
+        <div class="alert alert-danger w-100 d-flex justify-content-center" >
+            {% if errorMessage is defined %}
+                {{ errorMessage }}
+            {% endif %}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+
+    </template>
+</turbo-stream>

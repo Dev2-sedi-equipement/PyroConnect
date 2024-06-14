@@ -1,0 +1,90 @@
+@import '../variables.scss';
+//title Login
+/* === HEADING STYLE #3 === */
+
+.titleLogin h1 {
+  text-align:center;
+  text-transform:uppercase;
+  font-size:26px; letter-spacing:6px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  grid-template-rows: 16px 0;
+  grid-gap: 22px;
+
+}
+
+
+.titleLogin h1:after,.titleLogin h1:before {
+  content: " ";
+  display: block;
+  border-bottom: 2px solid #ccc;
+  background-color:#f8f8f8;
+}
+
+
+.contentLogin{max-width: 800px; height: 500px; background-color:  white; border-radius: 8px;}
+
+.emailInput,.mdpInput{
+  border-bottom: 3px solid black;padding-left: 1rem;border: 0px;margin: 1.5rem 0 !important;border-radius: 7px;
+  height: 50px; background-color: #f2f2f2;
+  &:focus{border-bottom: 3px solid #3a5fd1 !important;outline: none; }
+  &::placeholder {
+    color: black !important;
+    font-size: 1.2em !important;
+  }
+  
+}
+.mystyle{color: #3260bb !important;
+  font-size: 1.2em !important;
+border-bottom: 3px solid #3260bb;}
+.empty {
+  border-bottom: 3px solid black !important;
+}
+
+form#login, form#register{width: 65%;}
+
+.btn-Connexion{
+  
+
+  &:hover{
+  transform: scale(1.02);
+  background-color: #424649!important;
+  }
+  &:active{
+    background-color: #000000d6 !important;
+  }
+}
+
+
+
+@media (min-width: 800px) {
+  .contentRegister,.contentLogin {
+    width: 80%;
+  }
+}
+@media (max-width: 800px) {
+
+  .contentLogin ,.contentRegister{
+    width: 90% !important;
+  }
+}
+@media (min-width: 360px) and (max-width:991px){
+  
+  #formRegister,#formLogin{
+    width: 80% !important;
+   
+  }
+}
+
+@media (min-width: 992px) {
+
+  .contentRegister,.contentLogin{
+
+    min-width: 700px;
+
+      #formRegister,#formLogin{
+        width: 80% !important;
+      
+      }
+  }
+}

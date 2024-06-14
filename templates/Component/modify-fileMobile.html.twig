@@ -1,0 +1,79 @@
+
+<div style="background-color: #ffffff38; height:100%;margin-bottom:100px;width:85% !important;border-radius: 25px;" class=" d-flex flex-column">
+    
+    <h1 style="color: #fff;text-decoration: underline;text-align: center;" class="m-4">Modifier le dossier</h1>
+    <div class="d-flex justify-content-between ">
+        <div style ="line-height: 2rem;font-weight:bold;  width: fit-content;  margin: 1rem; padding-left: 0.5rem;padding-right: 0.5rem;"> 
+            <span class="d-none">Transmis : Oui ? Non | Déclaration Préfecture: Oui ? Non | Contrat artificier : Oui ? Non</span>
+        </div>
+        {% if user and 'SF' in user.roles %}
+        <select class="form-select mt-3" aria-label="Default select example" style="width: 300px !important;height: 42px !important;margin: 1rem; ">
+            <option disabled selected>Options</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+        </select>
+        {% endif %}
+    </div>
+
+    <div class="form-group d-flex flex-column align-items-center h-100 form-creation" style="justify-content: space-evenly;">
+        
+        <div class=" w-100 m">
+            <div class=" w-100 d-flex justify-content-center">
+                <input type="text" class="form-control w-85" placeholder="Nom de la ville">
+            </div>
+            <div class=" d-flex justify-content-center">
+                <select class="form-select w-85 " aria-label="Default select example" style="height: 42px !important;">
+                    <option disabled selected>Sélectionner un département</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </div>
+
+            <div class="d-flex justify-content-center ">
+                    <input type="text" class="form-control Montant-commande" aria-label="Amount (to the nearest dollar)" placeholder="Montant de la commande">
+                </div>
+            </div>
+        </div>
+
+
+        <div class="justify-content-between flex-wrap w-85">
+            <div class="m">
+                <input type="datetime" class="form-control " placeholder="Sélectionner une date et heure">
+            
+                <input type="number" class="form-control  " placeholder="Nombre personnel de tir ">
+
+                <input type="text" class="form-control  personnel" placeholder="Nom du/des personnel(s) de tir ">
+            </div>
+
+        </div>
+
+        <div class=" w-85 m">
+            <select class="form-select " aria-label="Default select example" placeholder="Type de feu">
+                <option disabled selected>Type de feu</option>
+                <option value="3">F1</option>
+                <option value="2">F2</option>
+                <option value="1">F3</option>
+            </select>
+
+            <div class="form-floating   ">
+                <textarea class="form-control" placeholder="Mettre un commentaire" class="" id="floatingTextarea2"></textarea>
+                <label for="floatingTextarea2">Mettre un commentaire</label>
+            </div>
+
+        </div>
+    </div>
+    
+    
+
+</div>
+
+<style>
+.m{gap: 1.1rem;
+  display: grid;}
+@media (min-width: 1050px) { .form-creation{} }
+
+{# .col{display:flex; justify-content:center;} #}
+
+</style>

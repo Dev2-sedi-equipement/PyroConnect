@@ -1,0 +1,11 @@
+{# templates/reset_password/_flash_messages.html.twig #}
+
+{% for message in app.flashes('danger') %}
+    <turbo-stream action="replace" target="flash-messages">
+        <template>
+            <div class="alert alert-danger">
+                {{ message }}
+            </div>
+        </template>
+    </turbo-stream>
+{% endfor %}

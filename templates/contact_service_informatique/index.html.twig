@@ -1,0 +1,396 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contactez le service informatique
+{% endblock %}
+
+{% block body %}
+	<body class="d-flex align-items-center justify-content-center">
+      <section id="navProfilPC" class="h-100">
+        <div class="flex-shrink-0 p-3 text-bg-dark h-100 layout-sidebar" >
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+              
+                <span class="fs-4">Mon Profil</span>
+            </a>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto gap-3">
+                <li class="nav-item">
+                    <a href="{{path("app_gestion_profil")}}" class="nav-link " aria-current="page">
+                      
+                        Gestion du Profil
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{path("app_contact_service_informatique")}}" class="nav-link text-white active">
+                  
+                        Contacter le service Informatique
+                    </a>
+                </li>
+
+                <li class="nav-item" >
+                    <a href="{{ path('app_index') }}" data-turbo-prefetch="true" data-turbo-stream  class="nav-link text-white">
+                    
+                        Revenir sur l'accueil
+                    </a>
+                </li>
+            </ul>
+
+            <hr>
+            <a href="{{ path('app_logout') }}" class="btn btn-primary w-100" href="#">Se déconnecter</a>
+        
+        </div>
+    
+                
+    </section>
+
+    <section id="navProfilTab">
+        <nav class="navbar navbar-dark bg-dark z-1">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </nav>
+
+        <div class="offcanvas offcanvas-start bg-dark" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="p-3">
+            <div class="offcanvas-head-title">
+                <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                    <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+                    <span class="fs-4" style="font-size: 22px;" >Mon Profil</span>
+                </a>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>               
+            </div>
+            <hr>
+            </div>
+
+            <div class="offcanvas-body d-flex justify-content-between flex-column">
+                <ul class="nav flex-column">
+                    <li class="">
+                        <a style="font-size: 22px;"  class="nav-link link-underline-opacity-0  linkNav link-underline active" aria-current="page" href="{{path("app_gestion_profil")}}" >
+                            Gestion du Profil
+                        </a>
+                    </li>
+                    <li class="">
+                        <a style="font-size: 22px;"  class="nav-link link-underline-opacity-0 linkNav link-underline" href="{{path("app_contact_service_informatique")}}">
+                            Contacter le service Informatique
+                        </a>
+                    </li>
+                    <li style="font-size: 22px;"  class="">
+                        <a href="{{ path('app_index') }}" data-turbo-prefetch="true" data-turbo-stream class="nav-link link-underline-opacity-0 linkNav link-underline" >Revenir sur l'accueil</a>
+                    </li>
+                </ul>
+                <div>
+                    <hr>
+                    <a style="font-size: 22px;"  href="{{ path('app_logout') }}" class="btn btn-primary w-100 text-center" href="#">Se déconnecter</a>
+                
+                </div>
+            </div>
+        </div>
+    </section>
+	<div class="container bg-white rounded-4">
+
+		<div class="row">
+
+      <h1 class="text-center bg-info-subtle py-2" style="border-radius: 8px;">Formulaire de contact</h1>
+			<div class="col-xl-12  p-4">
+
+
+        <div id="alertContact"></div>
+				<p class="lead">Pour toutes erreurs, bugs rencontrés.</p>
+      	<div class="controls" style="background: #d5d5d561;">
+        {{ form_start(form, {'attr': {'id': 'contact-form'}}) }}
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+          {{ form_label(form.nom) }}
+            {# Champ de formulaire nom avec concaténation de name et lastname et désactivé #}
+          {{ form_widget(form.nom, {'attr': {'value': name ~ ' ' ~ lastname, 'disabled': 'disabled'}}) }}
+          {# Champ masqué pour nom #}
+          <input type="hidden" name="{{ form.nom.vars.full_name }}" value="{{ name ~ ' ' ~ lastname }}">
+
+          {# Champ de formulaire email désactivé #}
+          {{ form_label(form.email) }}
+
+          {{ form_widget(form.email, {'attr': {'value': email, 'disabled': 'disabled'}}) }}
+          {# Champ masqué pour email #}
+          <input type="hidden" name="{{ form.email.vars.full_name }}" value="{{ email }}">
+
+          {# Autres champs de formulaire #}
+          {{ form_label(form.sujet) }}
+          {{ form_widget(form.sujet, {'attr': {}}) }}
+
+
+          {{ form_label(form.message) }}
+          {{ form_widget(form.message, {'attr': {"style":"min-height: 158px;"}}) }}
+    
+          <div class="row">
+            <div class="col-md-12">
+              <p class="text-muted">
+                <strong>*</strong>
+                Ces champs sont obligatoires.</p>
+            </div>
+          </div>
+        </div>
+        <button type="submit" id="submitContactForm" class="btn btn-success btn-sm" style="height: 45px; width: 125px;">{{ button_label|default('Enregistrer') }}</button>
+
+        {{ form_end(form) }}
+
+
+			</div>
+			<!-- /.8 -->
+
+		</div>
+		<!-- /.row-->
+
+	</div>
+	<!-- /.container-->
+</body>
+
+	<style>
+    input[type=text]:focus, input[type=email]:focus,#contact_service_informatique_sujet:focus, #form_message:focus, #contact_service_informatique_message:focus{
+    border: 3px solid #555;
+     background: linear-gradient(-45deg, #b5262a00 0%, #0e63e840 100%);
+    }
+    #contact_service_informatique_nom:invalid, #contact_service_informatique_email:invalid {
+      border: 2px solid red;
+    }
+    .form-control:valid {
+      border: 3px solid green !important;
+      border-bottom: 2px solid green !important;
+      background: linear-gradient(-45deg, #fff 0%, #9df47d47 100%) !important;
+
+    }
+  .form-control:disabled {
+    border-bottom: 2px solid green;
+    background: linear-gradient(-45deg, #fff 0%, #9df47d47 100%);
+  }
+
+  @media (min-width: 768px) {
+    .container {
+      max-width: 700px !important;
+    }
+  }
+
+    .offcanvas-body a, .nav-pills a {
+    color: #f2f2f2;
+    text-align: left;
+    text-decoration: none;
+    }
+    .offcanvas-body a:hover, .nav-pills a:hover {
+    background-color: #ddd !important;
+    color: black !important;
+    }
+
+  
+
+    .nav-link.active{
+      color: #cecece !important;
+      background-color: #7b8da8 !important;
+    }
+
+    
+    html,body{
+        height:100%;
+    }
+
+    hr{
+    margin: 1rem 0;
+    color: white;
+    border: 0;
+        border-top-width: 0px;
+        border-top-style: none;
+        border-top-color: currentcolor;
+    border-top: var(--bs-border-width) solid;
+    opacity: 0.25;
+    }
+    .offcanvas-head-title{
+        display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    }
+
+
+  </style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    let messageInput = document.getElementById("contact_service_informatique_message");
+
+    messageInput.addEventListener('input', () => {
+        let message = messageInput.value;
+
+        // Remplacer chaque point final par un point final suivi d'un saut de ligne (\n)
+        let messageAvecSautsDeLigne = message.replace(/\. /g, '.\n');
+
+        // Mettre à jour la valeur de l'input avec le message modifié
+        messageInput.value = messageAvecSautsDeLigne;
+    });
+});
+
+
+</script>
+
+	{# <style>
+		        @import url('https://fonts.googleapis.com/css?family=Lato|Roboto+Slab');
+		
+		    * {
+		    position: relative;
+		    margin: 0;
+		    padding: 0;
+		    box-sizing: border-box;
+		    }
+		
+		    .centered {
+		    height: 100%;
+		    display: flex;
+		    flex-direction: column;
+		    justify-content: center;
+		    align-items: center;
+		    background: white;
+		
+		    }
+		
+		    h1 {
+		    margin-bottom: 50px;
+		    font-family: 'Lato', sans-serif;
+		    font-size: 50px;
+		    }
+		
+		    .message {
+		    display: inline-block;
+		    line-height: 1.2;
+		    transition: line-height .2s, width .2s;
+		    overflow: hidden;
+		    }
+		
+		    .message,
+		    .hidden {
+		    font-family: 'Roboto Slab', serif;
+		    font-size: 18px;
+		    }
+		
+		    .hidden {
+		    color: #FFF;
+		    }
+		</style>
+		
+		<section class="centered">
+		  <h1>500 Service Indisponible</h1>
+		  <div class="container text-center">
+		    <span class="message" id="js-whoops"></span> <span class="message" id="js-appears"></span> <span class="message" id="js-error"></span> <span class="message" id="js-apology"></span>
+		    <div><span class="hidden" id="js-hidden">Message Here</span></div>
+		    <a class="btn btn-primary" href="{{path('app_gestion_profil')}}">Revenir en sécurité</a>
+		
+		  </div>
+		</section>
+		
+		
+		<script defer>
+		    // Voici les différents messages que nous utiliserons pour créer le message affichable de l'erreur 500
+		// Voici les différents messages que nous utiliserons pour créer le message affichable de l'erreur 500
+		const messages = [
+		  ['Oh là là !', 'Zut !', 'Excusez-moi.', 'Oh là là !', 'Zut alors !', 'Hmm...', 'C\'est embarrassant.', 'Eh bien, bon sang !'],
+		  ['Il semblerait', 'On dirait que', 'Malheureusement,', 'Il semble que', 'Tristement,', 'D\'un coup,'],
+		  ['Une erreur s\'est produite.', 'Nous avons commis une erreur.', 'Quelque chose s\'est mal passé.', 'Le serveur a rencontré un problème.', 'Un bug est apparu.', 'Quelqu\'un a fait une erreur.', 'Les lutins se sont introduits dans le serveur !', 'Le serveur a dysfonctionné.', 'Le site web a connu une mauvaise journée.', 'Notre code a rencontré un problème.'],
+		  ['Désolé.', 'Nous nous excusons.', 'C\'est de notre faute.', 'Journée difficile.', 'Nous sommes vraiment désolés.', 'Nous vous prions de bien vouloir nous excuser.']
+		];
+		
+		
+		// Ce sont les différents éléments que nous allons remplir. Ils sont dans le même ordre que le tableau de messages
+		const messageElements = [
+		  document.querySelector('#js-whoops'),
+		  document.querySelector('#js-appears'),
+		  document.querySelector('#js-error'),
+		  document.querySelector('#js-apology')
+		];
+		
+		// nous utiliserons cet élément pour les calculs de largeur
+		const widthElement = document.querySelector('#js-hidden');
+		// garder une trace du dernier type de message affiché
+		let lastMessageType = -1;
+		// à quelle fréquence la page doit-elle changer de message
+		let messageTimer = 4000;
+		
+		// lorsque le document est chargé, configurer les messages initiaux ET définir une minuterie pour définir les messages
+		document.addEventListener('DOMContentLoaded', (event) => {
+		  setupMessages();
+		  setInterval(() => {
+		    swapMessage();
+		  }, messageTimer);
+		});
+		
+		// Obtenir les messages initiaux pour chaque élément de message
+		function setupMessages() {
+		  messageElements.forEach((element, index) => {
+		    let newMessage = getNewMessage(index);
+		    element.innerText = newMessage;
+		  });
+		}
+		
+		// définir la largeur d'un élément donné pour correspondre à la largeur de son texte
+		function calculateWidth(element, message) {
+		  // utiliser notre élément masqué fictif pour obtenir la largeur du texte. Ensuite, utilisez cela pour définir la largeur réelle de l'élément
+		  widthElement.innerText = message;
+		  let newWidth = widthElement.getBoundingClientRect().width;
+		  element.style.width = `${newWidth}px`;
+		}
+		
+		// échanger un message pour l'un des types de message
+		function swapMessage() {
+		  let toSwapIndex = getNewSwapIndex();
+		  let newMessage  = getNewMessage(toSwapIndex);
+		  // Animer la disparition, définir la largeur et la réapparition
+		  messageElements[toSwapIndex].style.lineHeight = '0';
+		  // une fois que la hauteur de ligne est terminée, définir la largeur de l'élément et le message
+		  setTimeout(() => {
+		    // assurez-vous que l'élément a une largeur définie pour les transitions
+		    checkWidthSet(toSwapIndex, messageElements[toSwapIndex].innerText);
+		    // définir le nouveau texte
+		    messageElements[toSwapIndex].innerText = newMessage; 
+		    // définir la nouvelle largeur
+		    calculateWidth(messageElements[toSwapIndex], newMessage);
+		  }, 200);
+		  // une fois la largeur terminée, transition de la hauteur de ligne à nouveau à 1 pour que nous puissions voir le message
+		  setTimeout(() => {
+		    messageElements[toSwapIndex].style.lineHeight = '1.2';
+		  }, 400);
+		}
+		
+		// Nous devons nous assurer que l'élément à l'index passé a une largeur définie pour que nous puissions utiliser des transitions
+		function checkWidthSet(index, message) {
+		  if (false == messageElements[index].style.width) {
+		    messageElements[index].style.width = `${messageElements[index].clientWidth}px`;
+		  }
+		}
+		
+		// Retourne un nouvel index pour échanger le message. Ne doit pas être le même que le dernier type de message échangé
+		function getNewSwapIndex() {
+		  let newMessageIndex = Math.floor(Math.random() * messages.length);
+		  while (lastMessageType == newMessageIndex) {
+		    newMessageIndex = Math.floor(Math.random() * messages.length);
+		  }
+		  return newMessageIndex;
+		}
+		
+		// Obtenir un nouveau message pour l'élément de message.
+		function getNewMessage(toSwapIndex) {
+		  const messagesArray   = messages[toSwapIndex];
+		  const previousMessage = messageElements[toSwapIndex].innerText;
+		  // Obtenir un nouvel index aléatoire et le message à cet index
+		  let newMessageIndex = Math.floor(Math.random() * messagesArray.length);
+		  let newMessage      = messagesArray[newMessageIndex];
+		  // assurons-nous qu'ils ne sont pas identiques au message déjà là
+		  while (newMessage == previousMessage) {
+		    newMessageIndex = Math.floor(Math.random() * messagesArray.length);
+		    newMessage      = messagesArray[newMessageIndex];
+		  }
+		  return newMessage;
+		}
+		
+		
+		</script> #}
+{% endblock %}

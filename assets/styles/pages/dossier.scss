@@ -1,0 +1,328 @@
+
+
+.form-floating{width: 375px;}
+.champForm{max-width: 400px;}
+
+
+.content-vrp,.content-sf{
+    position: fixed;
+    width: 100% !important;    overflow: scroll;
+    height: 100%;
+}
+
+.btn-options{color: black; font-weight: bold; font-size: 19px;
+    &:hover{color: white; text-shadow: 0 0 60px rgba(202,228,225,0.8);}
+
+}
+
+
+// Create Dossier
+#h1-createDossier{
+    color: #fff;text-decoration: underline;text-align: center;
+}
+
+
+
+
+#noDossierFound{
+    display: flex ;
+    justify-content: center;
+}
+
+
+
+//Modifier dossier
+.disapear {
+    display: none;
+}
+
+.dossier-modified{
+    margin-bottom: 0px !important;
+}
+
+
+
+#modifyDossierHeader{
+    color: #fff;
+    text-decoration: underline;
+    text-align: center;
+    width: fit-content;
+    max-width: 450px;
+    font-size: 26px;
+}
+
+.spanDate{
+    height:50px; width:190px;margin-top: -0.5rem; border-bottom-left-radius: 8px; border-top-right-radius: 6px !important;
+}
+
+.dossier-item {
+    display: flex;
+    text-decoration: none;
+    border: 1px solid white;
+    padding: 0.5rem 0 0.5rem 0.1rem;
+// Appliquer une marge inférieure de 1rem aux paragraphes
+    p {
+        margin-bottom: 1rem!important;
+    }
+}
+
+.bg-grise ,.bg-vert,.bg-orange,.bg-rouge {
+    p{
+        margin-top: 1rem !important;
+    }
+    
+}
+  .padding-card{
+    padding: 0.5rem 0 0.5rem 0.1rem;
+  }
+
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+}
+
+/* Links inside the navbar */
+.navbar a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    text-decoration: none;
+}
+
+.notification-buttons > button{
+    font-size: 16px !important;
+}
+/* Change background on mouse-over */
+.linkNav a:hover {
+    background-color: #ddd !important;
+    color: black !important;
+}
+
+
+.dossier-container {
+    max-height: 580px; /* Ajustez la hauteur en fonction de vos besoins */
+    overflow-y: auto;
+    scrollbar-color: #020000a6 #00000059;
+    overflow-y: scroll;
+    
+
+
+}
+.sticky-input {
+    position: sticky;
+    top: 0;
+    z-index: 0; /* Assurez-vous que l'élément reste au-dessus des autres contenus */
+}
+
+
+.options {
+    position: sticky;
+    top: 0;
+
+    z-index: 1000; /* Assurez-vous que les options restent au-dessus des autres contenus */
+}
+
+
+.dossier-container::-webkit-scrollbar {
+    width: 10px;
+}
+
+.dossier-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.dossier-container::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+.dossier-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+.dossier-item {
+    transition: opacity 0.3s; /* Ajoutez une transition pour une animation fluide */
+}
+
+
+
+.alert-container{
+    background-color: #f9d5d8!important;
+    box-shadow: 0px 0 45px rgb(1, 1, 1) !important; 
+}
+
+label {
+    &:not(:active) {
+        filter: brightness(50%);
+    }
+ 
+}
+label.active {
+    filter: none !important;
+}
+
+
+#editComments:hover{
+    box-shadow:  none !important;
+    background-color: rgba(255, 255, 255, 0.185)  !important;
+}
+
+.comment-placeholder::placeholder {
+    color: red!important;
+ }
+
+@media (min-width: 360px) and (max-width: 767.98px) { 
+    .all-dossiers{
+        width: 100% !important;
+
+    } 
+    .divSearch{
+        padding: 1rem;
+    }
+    .content-vrp,.content-sf{
+        position: absolute;
+    }
+    
+}
+@media (min-width: 360px) and (max-width: 474.98px) { 
+
+    #sortParent{
+        padding: 1rem;
+    }
+}
+
+/* Styles pour les écrans en mode paysage sur les tablettes */
+@media screen and (min-width: 768px) and (max-width: 1200px) and (orientation: landscape) {
+    .dossier-container {
+        max-height: 480px;
+        overflow-y: auto; 
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 1200px) and (orientation: portrait) {
+    .dossier-container {
+        max-height: 600px;
+        overflow-y: auto; 
+    }
+}
+/* Main content */
+@media (min-width:768px){
+    .hide-nav{
+        height: 128px !important; /* Add a top margin to avoid content overlay */
+    } 
+    .hide-navM{display: none;}
+    .navbar {position: fixed; /* Set the navbar to fixed position */}
+ 
+}
+
+
+@include media-breakpoint-up(md) {
+
+
+    .dossierAffichage{
+        margin-bottom: 1.5rem !important;
+        margin-top:100px;
+    }
+
+    .form-floating{ 
+
+        .divArea {
+            justify-content: flex-start !important;
+            margin-bottom: 1.5rem;
+
+            textarea{width: 100% !important;}
+        }
+        
+    }
+    .divDossier{margin-top: 6rem !important;
+        .divDossierMargin{margin-top: 6rem;}
+    }
+    
+  
+    #searchForm{
+        width: 80% !important;
+    }
+
+}
+@include media-breakpoint-down(md) {
+    .content-vrp{
+        position: unset;
+    }
+    .hide-navM{
+        height: 56px !important; /* Add a top margin to avoid content overlay */
+    }  
+    .hide-nav{display:none;}
+
+    .dossierAffichage{
+        margin-bottom: 1.5rem !important;
+        margin-top:2rem;
+    }
+
+    .divDossierMargin {
+        margin-bottom: 2rem;
+        margin-top: 15rem;
+    }
+
+    .xsFlexColumn{
+
+        display: flex!important;
+        flex-direction: column !important;
+    }
+    .xsAround{justify-content: space-around !important;margin-bottom: 0px !important;}
+    .xsMargin{margin-top: -6rem !important;margin-bottom: -5rem !important;}
+    .xsMarginTop{
+        margin-top: -1rem !important;
+    }
+
+    .divDossier{margin-top: 7rem !important;}
+
+    .noMarginMobile{margin: 0px !important;}
+
+    #searchForm{
+        width: 60% !important;
+        max-width: 300px;
+        min-width: 300px;
+    }
+    .divDossierMargin{
+    
+        margin-bottom: 1rem;
+    }
+    .btnBack {
+        height: 59px;
+    }
+    #h1-createDossier{
+        font-size: larger;
+    }
+    .all-dossiers{
+        padding-right: 0px;
+        padding-left:  0px;
+    }
+    .offcanvas-body{
+        padding: 1rem;
+    }
+    .notification-buttons{
+        min-width: none !important;
+        max-width: none !important;
+
+    }
+    #dropdownSearchClient{
+        min-width: 350px !important;
+    }
+}
+@media (min-width: 768px) {
+    .container {
+        max-width: 900px !important;
+    }
+
+    #searchForm{
+        width: 60% !important;
+        max-width: 585px;
+    }
+  
+    .padding-tab-options {padding-top:100px;}
+    .notification-buttons{
+        min-width: 359px;
+        max-width: 359px;
+    }
+}
+ 

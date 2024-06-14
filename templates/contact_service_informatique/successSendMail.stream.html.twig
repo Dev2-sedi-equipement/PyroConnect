@@ -1,0 +1,38 @@
+<turbo-stream action="append" target="alertContact">
+    <template>
+        <div class="alert alert-success w-100 successAlert">
+            Un mail vient d'être envoyé ! 
+            <button type="button" class="close btn btn-danger closeNotification" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <script defer>
+
+            setTimeout(deleteNotification, 5000);
+            function deleteNotification() {
+                document.querySelector(".successAlert").remove();
+            }
+
+            function setupCloseButton() {
+                // Sélectionnez tous les boutons "closeNotification"
+                const closeButtons = document.querySelectorAll('.closeNotification');
+
+                // Ajoutez un gestionnaire d'événements à chaque bouton
+                closeButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        // Trouvez l'élément parent (l'alerte) du bouton
+                        const alert = button.closest('.alert');
+
+                        // Cachez l'alerte en lui ajoutant la classe 'd-none' (display: none)
+                        alert.classList.add('d-none');
+                    });
+                });
+            }
+
+            setupCloseButton(); // Appelez la fonction lors du chargement initial
+
+            // Ajoutez un écouteur d'événements pour les nouveaux ajouts Turbo
+            document.addEventListener('turbo:load', setupCloseButton);
+        </script>
+    </template>
+</turbo-stream>

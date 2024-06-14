@@ -1,0 +1,47 @@
+
+
+<turbo-stream action="replace" target="RequestCardMail">
+    <template>  
+        <div class="" id="RequestCardMail">
+            <div class="" id='requestMail' style="height: 460px;">             
+                <h1 class="text-center mb-4">Réinitialiser votre mot de passe</h1>
+                {{ form_start(requestForm, {'attr': {'class': 'd-flex flex-column mb-4', }}) }}
+                    <div class="form-group">
+                {{ form_widget(requestForm.email, {'attr': {'class': 'form-control', 'placeholder': 'Entrez votre adresse email', 'value': app.request.query.get('email') }}) }}
+                    </div>
+                    <small class="form-text  mb-3 mt-3 text-white">
+                        Entrez votre adresse email, et nous vous enverrons un lien pour réinitialiser votre mot de passe.
+                    </small>
+                    <button type="submit" data-turbo-prefetch="true" class="btn btn-secondary btn-block" style="font-size: 18px;">Envoyer l'email de réinitialisation de mot de passe</button>
+                {{ form_end(requestForm) }}
+                <div style="max-width:596px;" class="w-100">
+                    <a href="{{path("app_login")}}" class="btn btn-primary w-100">Se connecter</a>
+                </div>
+                {# <form action="#" class="w-100" method="post">
+                    <input type="hidden" name="_iconcaptcha-token" value="6dd1e7c6b10d913dcf1e432366d78902f476a4652c8594b1023e67745cc1ea4f"> 
+                    <div class="iconcaptcha-widget iconcaptcha-theme-light iconcaptcha-init" data-theme="light" style="font-family: inherit;">
+                        <div class="iconcaptcha-modal">
+                            <div class="iconcaptcha-modal__body">
+                                <div class="iconcaptcha-modal__body-circle"></div>
+                                <div class="iconcaptcha-modal__body-title">Verify that you are human.</div>
+                                <div class="iconcaptcha-modal__body-info" style="">
+                                    <a href="https://www.fabianwennink.nl/projects/IconCaptcha" target="_blank" rel="follow" title="IconCaptcha by Fabian Wennink">IconCaptcha ©</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form> #}
+                <div class="iconcaptcha-widget" data-theme="light"></div>
+            
+
+            </div>
+        </div>
+
+        <script>
+            let alert = document.querySelector('alert');
+            if(alert){
+                alert.remove();
+            }
+        </script>
+    </template>
+</turbo-stream>

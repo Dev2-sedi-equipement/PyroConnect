@@ -1,0 +1,44 @@
+#requestMail {
+
+    display: flex !important;
+    justify-content: center !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    background: rgba(0, 0, 0, 0.38);
+    color: white;
+    border-radius: 13px;
+    min-width: 558px;
+
+   
+    #RequestCardMail{
+        &:hover{
+            background-color: rgba(0, 0, 0, 0.13) !important;
+        }
+    }
+}
+
+#RequestCardMail{
+    width: 100%;
+  max-width: 640px;
+  border-radius: 13px;
+}
+
+#sendMail{
+    display: flex !important;
+    justify-content: center !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    background: rgba(0, 0, 0, 0.38);
+    color: white;
+    border-radius: 13px;
+}
+
+
+@include media-breakpoint-down(md) {
+
+    #requestMail{
+        margin: 2rem;
+        padding: 2rem;
+        min-width: 0px;
+    }
+}

@@ -1,0 +1,36 @@
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('searchClient') }}
+    {{ encore_entry_script_tags('createDossier') }}
+
+
+    
+{% endblock %}
+
+{% for message in app.flashes('success') %}
+    <div class="alert alert-success">
+        {{ message }}
+    </div>
+{% endfor %}
+
+
+
+	{% include "create_file/_create-file.html.twig" %}
+
+
+
+
+<style>
+    .invisibleR {
+        position: absolute;
+        left: -9999px;
+    }
+    #selectClient{
+        position: absolute;top: -30px; white-space: nowrap;background: #ffef00;border-radius: 5px;
+    }
+
+
+
+    
+</style>
+

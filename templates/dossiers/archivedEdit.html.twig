@@ -1,0 +1,224 @@
+{{ form_start(archiveForm, {'attr': {'class': 'dossier-generated '}}) }}
+{{ form_errors(archiveForm) }}
+
+   <div id="archiveFile" class="d-flex w-100 justify-content-center align-items-center flex-column">
+        
+        <div class="d-flex flex-column divDossierMargin w-100" style="background-color: #ffffff38;  max-width: 900px; border-radius: 25px;">
+            <div class="justify-content-between d-flex">
+                <a href="{{ path('app_index')}}" data-turbo-action="prefetch" class="d-flex align-items-center justify-content-center btnBack ">
+                    <img class="btnBack btn" src="{{ asset('build/images/back-button.svg') }}" alt="Bouton Retour">
+                    <audio id="audio" src="{{ asset('build/audio/click-button-166324.mp3') }}"></audio>
+                </a>
+                <h1 id="h1-createDossier"style="color: #fff; text-decoration: underline; text-align: center;" class="m-4">Modifier le dossier : {{ nomDossier }}  </h1>
+                <div class="d-flex align-items-center justify-content-center me-2">
+                    {% if user and 'SF' in user.roles or user and 'ROLE_ADMIN' in user.roles%}
+                        <div class="">
+                            <button id="submitButton2"  type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#exampleModal">{{ button_label|default('Remettre le dossier au vrp') }}</button>
+                        </div>
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                <div class="modal-header bg-primary">
+                                    <h1 class="modal-title fs-5 text-white" id="exampleModalLabel">Récupération de dossier</b></h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <h3 class=" fw-bold">Êtes-vous sûr de vouloir remettre ce dossier au vrp ?</h3>
+                                
+                                    <i>Une fois le dossier rendu, vous pourrez à nouveau archiver le dossier.</i>
+
+
+                                </div>
+                                <div class="modal-footer">
+                                    <form action=""></form>
+                                    <form action="{{ path('app_dossiers_rendre_archive', {'id': dossiers.id}) }}" method="post" >
+
+                                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ dossiers.id) }}">
+                                        <button type="submit" class="btn btn-success OUIBROTHER">Continuer la récupération</button>
+                                    </form>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer le pop up</button>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                           <div class="">
+                            <button id="deleteButton"  type="button" class="btn btn-danger " data-bs-toggle="modal" data-bs-target="#deleteModal">{{ button_label|default('Supprimer définitivement') }}</button>
+                        </div>
+                        <!-- Modal -->
+                        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModal" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header bg-danger">
+                                        <h1 class="modal-title fs-5 text-white" id="exampleModalLabel">Suppression définitive du dossier</b></h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h3 class=" fw-bold">Êtes-vous sûr de vouloir supprimer ce dossier au vrp ?</h3>
+                                    
+                                        <i><i style="color:red;"class="bi bi-exclamation-triangle-fill "></i> Attention cette action est irréversible, une fois le dossier supprimé, vous ne pourrez le récupérer.</i>
+
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <form method="post" action="{{ path('app_dossiers_delete', {'id': dossiers.id}) }}">
+                                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ dossiers.id) }}">
+                                            <button type="submit" class="btn btn-danger">Continuer la suppression</button>
+                                        </form>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer le pop up</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>    
+                    {% endif %}
+                </div>
+            </div>
+
+            <div style ="line-height: 2rem;font-weight:bold;  width: fit-content;  margin: 1rem; padding-left: 0.5rem;padding-right: 0.5rem;"> 
+                <span>Transmis : Oui | Déclaration Préfecture: Non | Contrat artificier : Oui </span>
+
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle btn-dropdown" id="btnOptionsDossier" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Options du dossier
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu main-options">
+                        <li class="dropdown-submenu">
+                            {{ form_widget(archiveForm.transmis) }}
+                        </li>
+                        <li class="dropdown-submenu">                                           
+                            {{ form_widget(archiveForm.declarationPrefecture) }}
+                        </li>
+                        <li class="dropdown-submenu">
+                            {{ form_widget(archiveForm.contratArtificier) }}
+                        </li>
+                    </ul>
+                
+                </div>
+            </div>
+            <div class="form-group d-flex flex-column align-items-center h-100 form-creation" style="justify-content: space-evenly;">
+                {% if errors is defined %}
+                    {% for error in errors %}
+                        <li class="text-white">{{ error.message }}</li>
+                    {% endfor %}
+                {% endif %}
+                {{ form_row(archiveForm._token) }}
+                    {{ form_errors(archiveForm._token) }}
+
+                {% if 'SF' in app.user.roles %}
+                    <div class="d-flex justify-content-end align-items-center w-100 mb-4 mt-4" style="align-self: end; padding-right: 1.2rem;">
+                        <p style="margin-right: 1rem;font-size: 18px;font-weight: bolder;" class="text-end mb-0 w-100">Assigner ce dossier à un vrp</p>
+                      
+                   
+                        {{ form_widget(archiveForm.assignVrp, {'attr': {'class': 'form-control ', 'style':"height: 38px;"}}) }}
+                    
+                        
+                        {{ form_widget(archiveForm.nomVrp) }}
+
+                         {{ form_widget(archiveForm.dateModificationVRP) }}
+                        {{ form_widget(archiveForm.dateModificationSF) }}
+                        {{ form_widget(archiveForm.lectureSF) }}
+                        {{ form_widget(archiveForm.lectureVRP) }}
+                        {{ form_widget(archiveForm.nom) }}
+                        {{ form_widget(archiveForm.dateCreation) }}
+                    </div>
+                {% endif %}
+
+                {% if 'VRP' in app.user.roles %}
+                    {{ form_widget(archiveForm.nomVrp) }}
+                    {{ form_widget(archiveForm.dateModificationVRP) }}
+                    {{ form_widget(archiveForm.dateModificationSF) }}
+                    {{ form_widget(archiveForm.lectureSF) }}
+                    {{ form_widget(archiveForm.lectureVRP) }}
+                    {{ form_widget(archiveForm.nom) }}
+                    {{ form_widget(archiveForm.dateCreation) }}
+                    {{ form_widget(archiveForm.assignVrp) }}
+                {% endif %}
+
+                <div class="container h-100 mt-3">
+                    <div class="row h-100 flex-nowrap justify-content-center xsFlexColumn p-2">
+                        <div class="col-12 col-md-4 mb-4 d-flex flex-column justify-content-between xsAround align-items-center" style="height:250px;">
+                            <div class="dropdown w-100">
+                                <span id="selectClient"><em> </em></span>
+                                <button class="btn btn-secondary dropdown-toggle w-100" id="dropdownSelectClient" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Sélectionnez un client
+                                </button>
+                                <ul id="dropdownSearchClient"class="dropdown-menu" style="min-width: 526px;">
+                                    <section class="filter-client d-flex">
+                                        <div style="border-right: 2px solid black;">
+                                            <h5 class="text-center">Rechercher par code c0</h5>
+                                            <form class="">
+                                                <div class="form-group p-2">
+                                                    <input type="search" class="form-control " id="searchCodeClient" autofocus placeholder="Chercher un client ">
+                                                </div>
+                                            </form>
+                                        
+                                        </div>
+                                        <div style="border-right: 2px solid black;">
+                                            <h5 class="text-center">Rechercher par nom client</h5>
+                                            <form class="">
+                                                <div class="form-group p-2">
+                                                    <input type="search" class="form-control " id="searchName" autofocus placeholder="Minimum 3 lettres ">
+                                                </div>
+                                            </form>
+                                        
+                                        </div>
+                                        <div style="">
+                                            <h5 class="text-center">Rechercher par Ville</h5>
+                                            <form class="">
+                                                <div class="form-group p-2">
+                                                    <input type="search" class="form-control " id="searchVille" autofocus placeholder="Chercher un client ">
+                                                </div>
+                                            </form>
+                                        </div>
+                                            
+                                    </section>
+                   
+                                    
+                                </ul>
+                            </div>
+                            {{ form_widget(archiveForm.data_name) }}
+                            {{ form_widget(archiveForm.userId) }}
+
+                            {{ form_widget(archiveForm.clientId,{'attr': {'class': 'd-none'}}) }}
+                            {{ form_widget(archiveForm.typeFeu, {'attr': {'class': 'form-control', 'placeholder': 'Type de feu'}}) }}
+                            {{ form_widget(archiveForm.dateTir) }}
+                        </div>
+                        
+                        <div class="col-12 col-md-4 mb-4 d-flex flex-column justify-content-between xsAround xsMarginTop4 align-items-center" style="height:250px;">
+                            {{ form_widget(archiveForm.dpt, {'attr': {'class': 'form-control', 'placeholder': 'Ville'}}) }}
+
+                            {% include 'formDossier_component/nomPersonnelArchive_widget.html.twig' %} 
+                            <input type="text" class="form-control personnel invisible" placeholder="Nom du/des personnel(s) de tir">
+
+                        </div>
+                        <div class="col-12 col-md-4 mb-4 d-flex flex-column justify-content-between xsAround xsMargin align-items-center" style="height:250px;">
+                            
+                                {{ form_widget(archiveForm.montant, {'attr': {'class': 'form-control Montant-commande', 'placeholder': 'Montant'}}) }}
+                    
+                            {{ form_widget(archiveForm.nbPersonnel, {'attr': {'readonly': 'readonly', 'class': 'form-control mb-2', 'placeholder': 'Nombre personnel de tir'}}) }}
+                            <input type="text" class="form-control personnel invisible" placeholder="Nom du/des personnel(s) de tir"> 
+                        </div>
+                    </div>
+                        {# {{ form_widget(archiveForm.dossier_commentaire, {'attr': {'class': '', 'placeholder': 'Commentaire'}}) }} #}
+                        {{ form_widget(archiveForm.dossier_commentaire, {'attr': {'class': ' '}}) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{{ form_end(archiveForm) }}  
+
+
+</div>
+<style>
+
+@media (min-width: 360px) and (max-width: 767.98px) { 
+  #navMobile{
+    position: absolute;
+  }
+  body{
+    flex-direction: column;
+  }
+}</style>

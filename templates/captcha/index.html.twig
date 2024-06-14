@@ -1,0 +1,41 @@
+{# templates/captcha/index.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CaptchaController!{% endblock %}
+
+{% block body %}
+
+    <h1 class="text-white text-center">Veuillez remplir le captcha pour reinitialisez votre mot de passe</h1>
+    <section id =""class="d-flex justify-content-center align-items-center w-100" >
+        {{ form_start(form, {'attr': {'class': 'w-100 d-flex align-items-center justify-content-center flex-column'}} )}}
+            {% block captcha_widget %}
+                {{ form_widget(form, {'attr': { 'autocapitalize': 'off','autocorrect': 'off' }}) }}
+            {% endblock %}
+            <div class="">
+                <button type="submit" class="btn btn-success">Soumettre le code</button>
+                <a href="{{path("app_login")}}" class="btn btn-primary m-3">Revenir à l'espace de connexion</a>
+            </div>
+
+        {{ form_end(form) }}
+    </section>
+    <style>
+    h1{
+        font-size: 2rem;
+    }
+        #gregwar_captcha{
+            width: 100%;
+        }
+        .col-sm-2{
+            display:none;
+        }
+        .mb-3 {
+            padding:2rem;
+           justify-content: center;
+        }
+        .captcha_image{
+            width: 200px;
+            height:100px;
+        }
+    </style>
+  
+{% endblock %}

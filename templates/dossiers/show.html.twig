@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dossiers{% endblock %}
+
+{% block body %}
+    <h1>Dossiers</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ dossier.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ dossier.nom }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ dossier.ville }}</td>
+            </tr>
+            <tr>
+                <th>Montant</th>
+                <td>{{ dossier.montant }}</td>
+            </tr>
+            <tr>
+                <th>NbPersonnel</th>
+                <td>{{ dossier.nbPersonnel }}</td>
+            </tr>
+            <tr>
+                <th>NomPersonnel</th>
+                <td>{{ dossier.nomPersonnel }}</td>
+            </tr>
+            <tr>
+                <th>TypeFeu</th>
+                <td>{{ dossier.typeFeu }}</td>
+            </tr>
+            <tr>
+                <th>DateCreation</th>
+                <td>{{ dossier.dateCreation ? dossier.dateCreation|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>DateTir</th>
+                <td>{{ dossier.dateTir ? dossier.dateTir|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>DateModificationSF</th>
+                <td>{{ dossier.dateModificationSF ? dossier.dateModificationSF|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>DateModificationVRP</th>
+                <td>{{ dossier.dateModificationVRP ? dossier.dateModificationVRP|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>LectureSF</th>
+                <td>{{ dossier.lectureSF ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>LectureVRP</th>
+                <td>{{ dossier.lectureVRP ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_index') }}">back to list</a>
+
+    <a href="{{ path('app_dossiers_edit', {'id': dossier.id}) }}">edit</a>
+
+    {{ include('dossiers/_delete_form.html.twig') }}
+{% endblock %}

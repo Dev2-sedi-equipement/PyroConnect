@@ -1,0 +1,57 @@
+<turbo-stream action="prepend" target="ModifyFile">
+    <template>
+        <div class="alert alert-success w-100 successAlert">
+            Le dossier "{{nomDossier}}" a été modifié !
+            <button type="button" class=" btn-close close closeNotification" aria-label="Close">
+
+            </button>
+        </div>
+
+        <script >
+
+            // Cette fonction sera appelée pour chaque ajout de notification
+            function setupNotificationClose(alert) {
+                setTimeout(function() {
+                    alert.remove();
+                }, 8000); // 5 secondes en millisecondes
+            }
+
+            // Fonction principale pour configurer les boutons de fermeture et les notifications existantes
+            function setupNotifications() {
+                const successAlerts = document.querySelectorAll('.alert-success');
+                successAlerts.forEach(function(alert) {
+                    setupNotificationClose(alert);
+                });
+
+                // Sélectionnez tous les boutons "closeNotification"
+                const closeButtons = document.querySelectorAll('.closeNotification');
+
+                // Ajoutez un gestionnaire d'événements à chaque bouton
+                closeButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        // Trouvez l'élément parent (l'alerte) du bouton
+                        const alert = button.closest('.alert');
+
+                        // Cachez l'alerte en lui ajoutant la classe 'd-none' (display: none)
+                        alert.remove();
+                    });
+                });
+            }
+
+            // Appelez la fonction setupNotifications lors du chargement initial
+            setupNotifications();
+
+            // Ajoutez un écouteur d'événements pour les nouveaux ajouts Turbo
+            document.addEventListener('turbo:load', setupNotifications);
+
+        </script>
+
+        <style>
+        .alert.alert-success{
+            position: absolute;
+            top: 100px;
+        }
+
+        </style>
+    </template>
+</turbo-stream>

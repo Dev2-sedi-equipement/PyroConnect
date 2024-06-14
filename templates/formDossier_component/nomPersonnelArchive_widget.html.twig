@@ -1,0 +1,18 @@
+<div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="dropdown-personne">
+    Ajouter un personnel de tir
+    </button>
+
+
+    <ul class="dropdown-menu dropdown-menu w-100 p-0">
+        <li class="d-flex justify-content-evenly">
+            <input class="input-group" type="text" id="personnelValue" placeholder="Insérer un nom ">
+            <button id="personnelBtnSubmit" class="btn btn-success" style="border-radius: 0px !important;">Enregistrer</button>
+        </li>
+        <li class="d-flex justify-content-evenly">
+            {{ form_widget(archiveForm.nomPersonnel, {'attr': {'readonly': 'readonly', 'class': 'input-group', 'placeholder': 'Ne pas remplir ce champ'}}) }}
+            <img style="width: 47px;border-radius: 0px !important;" class="btn btn-danger" id="icon-delete" src="{{ asset('build/images/effacer.png') }}" alt="Bouton supprimer"></img>
+        </li>
+    </ul>
+</div>
+

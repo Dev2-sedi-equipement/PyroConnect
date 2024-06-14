@@ -1,0 +1,34 @@
+{% if dossiers and ("En cours de traitement" in dossiers.statut.libelle or "Non traité" in dossiers.statut.libelle) %}    
+    <div class="d-flex align-items-center justify-content-center p-2">
+      <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" disabled>Archiver ce dossier</button>
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header bg-primary">
+              <h1 class="modal-title fs-5 text-white" id="exampleModalLabel">Suppression du dossier <b>{{dossiers.nom}}</b></h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <h3 class=" fw-bold">Êtes-vous sûr de vouloir archiver ce dossier ?</h3>
+              <i>Vous ne serez plus en mesure de la récupérer, sauf si vous faites une demande auprès du service feu.</i>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer le pop up</button>
+              <form method="post" action="{{ path('app_dossiers_delete', {'id': dossiers.id}) }}">
+                  <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ dossiers.id) }}">
+                  <button class="btn btn-danger">Archiver ce dossier</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>      
+    </div>
+{% else %}
+  <div>
+      <form method="post" class="d-none invisible" disabled action="{{ path('app_dossiers_delete', {'id': dossiers.id}) }}" onsubmit="return confirm('Tu n'es pas supposé faire ceci ... ?');">
+          <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ dossiers.id) }}">
+          <button class="btn btn-danger  " disabled>Archiver ce dossier</button>
+      </form>
+  </div>
+{% endif %}

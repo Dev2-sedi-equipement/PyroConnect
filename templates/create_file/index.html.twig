@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+
+{# {% block javascripts %}
+    {{ parent() }}
+
+{% endblock %} #}
+
+
+{% block body %}
+    {% include 'Component/navbar/Desktop/navbar.html.twig' %}
+    {% include 'Component/navbar/Mobile/navbar.html.twig' %}
+
+    {% include 'Component/create-file.html.twig' %}
+
+
+{% endblock %}
+
+

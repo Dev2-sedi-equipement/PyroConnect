@@ -1,0 +1,35 @@
+<turbo-stream action="prepend" target="formRegister">
+    <template>  
+        {% if errors is defined %}
+            <div class="alert alert-danger w-100" >
+                <ul>
+                    {% for error in errors %}
+                
+                        <li>
+                            {{ error }}
+                        </li>
+                    
+                    {% endfor %}
+                </ul>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endif %}
+
+        <script>
+            const formLogin = document.querySelector('#formRegister');
+                if (formRegister !== null || formRegister !== 'undefined') {
+
+                formRegister.addEventListener('turbo:submit-end', function (event) {
+                    // Sélectionner le premier élément avec la classe .alert-danger
+                    const alertDanger = formRegister.querySelector('.alert');
+
+                    // Vérifier si un élément .alert-danger a été trouvé
+                    if (alertDanger) {
+                        // Supprimer l'élément .alert-danger
+                        alertDanger.remove();
+                    }
+                });
+            }
+        </script>
+    </template>
+</turbo-stream>

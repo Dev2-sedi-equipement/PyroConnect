@@ -1,0 +1,194 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reset your password{% endblock %}
+
+{% block body %}
+{# {% include 'Component/navbar.html.twig' %} #}
+
+<section id="Section-MailRequest" class="d-flex justify-content-center align-items-center h-100">
+
+    <div class="col-xl-6 col-lg-8 col-md-10 col-sm-10 d-flex justify-content-center">
+      
+        <div class="" id="resetMail">
+            <div id='requestMail' class="p-4">
+                <h1 class="text-center mb-4">Réinitialiser mon mot de passe</h1>
+                {{ form_start(resetForm, {'attr': {'class': 'w-100 d-flex align-items-center flex-column gap-3' }}) }}
+                <div id="flash-messages">
+                </diV>
+
+                <div class="form-group">
+                    {{ form_row(resetForm.plainPassword, {'attr': {'class': 'w-100'}}) }}
+                     <button type="button" class="btn btn-dark password-view mt-3" style="margin: 10px;" data-visible="false">Afficher le mot de passe</button>
+                     <button id="generatePassword"type="button"class="btn btn-dark password-view mt-3" style="margin: 10px;" id=""data-visible="false" onclick="genPassword(event)">Générer un mot de passe sécurisé</button>
+                    <table>
+                    <th><a  id="copyPassword" class="btn btn-warning" style="margin: 10px;" onclick="copyPassword()">Copier le mot de passe</a></th>
+                    </table>
+
+                </div>
+
+
+                <button class="btn btn-primary">Mettre à jour le mot de passe</button>
+                {{ form_errors(resetForm) }}
+                {{ form_end(resetForm) }}
+            </div>
+        </div>
+    </div>
+</section>
+
+<script defer>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.querySelector('form[name="change_password_form"]');
+        const passwordFirst = document.getElementById('change_password_form_plainPassword_first');
+        const passwordSecond = document.getElementById('change_password_form_plainPassword_second');
+        const flashMessagesContainer = document.getElementById('flash-messages');
+
+        form.addEventListener('submit', function(event) {
+            // Efface les anciens messages d'erreur
+            flashMessagesContainer.innerHTML = '';
+
+            let errors = [];
+
+            // Vérifie si les mots de passe correspondent
+            if (passwordFirst.value !== passwordSecond.value) {
+                errors.push('Les mots de passe ne correspondent pas.');
+            }
+
+            // Vérifie si les mots de passe respectent les contraintes
+            if (passwordFirst.value.length < 12) {
+                errors.push('Votre mot de passe doit contenir au moins 12 caractères.');
+            }
+            if (!/[A-Z]/.test(passwordFirst.value)) {
+                errors.push('Votre mot de passe doit contenir au moins une lettre majuscule.');
+            }
+            if (!/[a-z]/.test(passwordFirst.value)) {
+                errors.push('Votre mot de passe doit contenir au moins une lettre minuscule.');
+            }
+            if (!/\d/.test(passwordFirst.value)) {
+                errors.push('Votre mot de passe doit contenir au moins un chiffre.');
+            }
+            if (!/[@$!%*?&]/.test(passwordFirst.value)) {
+                errors.push('Votre mot de passe doit contenir au moins un caractère spécial.');
+            }
+
+            // Si des erreurs sont présentes, empêche la soumission et affiche les messages
+            if (errors.length > 0) {
+                event.preventDefault();
+
+                errors.forEach(error => {
+                    const errorMessage = document.createElement('div');
+                    errorMessage.classList.add('text-danger');
+                    errorMessage.textContent = error;
+                    flashMessagesContainer.appendChild(errorMessage);
+                });
+            }
+        });
+    });
+
+    // Fonction pour afficher/masquer le mot de passe
+    document.addEventListener('DOMContentLoaded', function() {
+        const passwordButton = document.querySelector('.password-view');
+        const passwordInput = document.getElementById('change_password_form_plainPassword_first');
+        const passwordUserInput = document.getElementById('change_password_form_plainPassword_second');
+
+        let passwordVisible = false;
+
+        passwordButton.addEventListener('click', function() {
+            if (passwordVisible) {
+                if (passwordInput !== null) {
+                    passwordInput.type = 'password';
+                }
+                if (passwordUserInput !== null) {
+                    passwordUserInput.type = 'password';
+                }
+                passwordButton.textContent = 'Afficher le mot de passe';
+                passwordVisible = false;
+            } else {
+                if (passwordInput !== null) {
+                    passwordInput.type = 'text';
+                }
+                if (passwordUserInput !== null) {
+                    passwordUserInput.type = 'text';
+                }
+                passwordButton.textContent = 'Cacher le mot de passe';
+                passwordVisible = true;
+            }
+        });
+    });
+
+    // Fonction pour copier le mot de passe
+    function copyPassword() {
+        const copyText = document.createElement('input');
+        copyText.value = document.getElementById('change_password_form_plainPassword_first').value;
+        document.body.appendChild(copyText);
+        copyText.select();
+        document.execCommand('copy');
+        document.body.removeChild(copyText);
+
+        const copyButton = document.getElementById('copyPassword');
+        copyButton.classList.add('copied-animation');
+        setTimeout(function() {
+            copyButton.classList.remove('copied-animation');
+        }, 1000);
+    }
+
+    // Fonction pour générer un mot de passe
+    function genPassword(event) {
+        event.preventDefault();
+
+        let chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()';
+        let passwordLength = 16;
+        let password = '';
+
+        let hasDigit = false;
+        let hasUpperCase = false;
+        let hasLowerCase = false;
+        let hasSpecialChar = false;
+
+        for (let i = 0; i < passwordLength; i++) {
+            const randomNumber = Math.floor(Math.random() * chars.length);
+            const char = chars.substring(randomNumber, randomNumber + 1);
+
+            if (!hasDigit && /[0-9]/.test(char)) {
+                hasDigit = true;
+            } else if (!hasUpperCase && /[A-Z]/.test(char)) {
+                hasUpperCase = true;
+            } else if (!hasLowerCase && /[a-z]/.test(char)) {
+                hasLowerCase = true;
+            } else if (!hasSpecialChar && /[^0-9a-zA-Z]/.test(char)) {
+                hasSpecialChar = true;
+            }
+            password += char;
+        }
+
+        if (!(hasDigit && hasUpperCase && hasLowerCase && hasSpecialChar)) {
+            genPassword(event);
+            return;
+        }
+
+        document.getElementById('change_password_form_plainPassword_first').value = password;
+        document.getElementById('change_password_form_plainPassword_second').value = password;
+    }
+</script>
+
+
+<style>
+    .col-sm-2{display: none;}
+    .form-group,.mb-3,.col-sm-10,input{width: 100% !important;}
+    .mb-3{
+        margin:0;
+    }
+
+/* Nouvelle classe pour l'animation */
+.copied-animation {
+    animation: fadeInOut 1s ease-in-out; /* Nom de l'animation, durée et fonction de temporisation */
+}
+
+/* Définition de l'animation */
+@keyframes fadeInOut {
+    0% { opacity: 1; } /* Opacité initiale */
+    50% { opacity: 0.5; } /* Opacité à mi-chemin */
+    100% { opacity: 1; } /* Opacité finale */
+}
+</style>
+
+{% endblock %}

@@ -1,0 +1,194 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello GestionProfilController!{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('password-visible') }}
+    {{ parent() }}
+
+
+{% endblock %}
+
+{% block body %}
+
+
+
+<section class="main d-flex h-100">
+    <section id="navProfilPC">
+        <div class="flex-shrink-0 p-3 text-bg-dark h-100 layout-sidebar" >
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+              
+                <span class="fs-4">Mon Profil</span>
+            </a>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto gap-3">
+                <li class="nav-item">
+                    <a href="{{path("app_gestion_profil")}}"  class="nav-link active" aria-current="page">
+                      
+                        Gestion du Profil
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{path("app_contact_service_informatique")}}" class="nav-link text-white">
+                  
+                        Contacter le service Informatique
+                    </a>
+                </li>
+
+                <li class="nav-item" >
+                    <a href="{{ path('app_index') }}" data-turbo-prefetch="true" data-turbo-stream  class="nav-link text-white">
+                    
+                        Revenir sur l'accueil
+                    </a>
+                </li>
+            </ul>
+
+            <hr>
+            <a href="{{ path('app_logout') }}" class="btn btn-primary w-100" href="#">Se déconnecter</a>
+        
+        </div>
+    
+                
+    </section>
+
+    <section id="navProfilTab">
+        <nav class="navbar navbar-dark bg-dark z-1">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </nav>
+
+        <div class="offcanvas offcanvas-start bg-dark" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="p-3">
+            <div class="offcanvas-head-title">
+                <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                    <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+                    <span class="fs-4" style="font-size: 22px;" >Mon Profil</span>
+                </a>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>               
+            </div>
+            <hr>
+            </div>
+
+            <div class="offcanvas-body d-flex justify-content-between flex-column">
+                <ul class="nav flex-column">
+                    <li class="">
+                        <a style="font-size: 22px;"  class="nav-link link-underline-opacity-0  linkNav link-underline active" aria-current="page" href="{{path("app_gestion_profil")}}" >
+                            Gestion du Profil
+                        </a>
+                    </li>
+                    <li class="">
+                        <a style="font-size: 22px;"  class="nav-link link-underline-opacity-0 linkNav link-underline" href="{{path("app_contact_service_informatique")}}">
+                            Contacter le service Informatique
+                        </a>
+                    </li>
+                    <li style="font-size: 22px;"  class="">
+                        <a href="{{ path('app_index') }}" data-turbo-prefetch="true" data-turbo-stream class="nav-link link-underline-opacity-0 linkNav link-underline" >Revenir sur l'accueil</a>
+                    </li>
+                </ul>
+                <div>
+                    <hr>
+                    <a style="font-size: 22px;"  href="{{ path('app_logout') }}" class="btn btn-primary w-100 text-center" href="#">Se déconnecter</a>
+                
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <div class=" bg-white w-100 d-flex justify-content-center align-items-center flex-column p-3 card cardProfil ">
+        <div class="h-100 d-flex justify-content-center flex-column card-body card-body-profil w-80">
+            <div style="background: white;color: black;border-radius: 11px;">
+                
+                <h2 class="text-center p-3 bg-warning-subtle" style="border-radius: 8px;">Modifier mes informations </h2>
+                <form method="post" id="GestionProfil"class="d-flex justify-content-center p-4 flex-column align-items-center">
+                {% for message in app.flashes('success') %}
+                    <div class="flash-success">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+                    <div class="row-gap d-grid gap-3" style="width: 80%">
+                        {{ form_start(form) }}
+                        {{ form_widget(form.email) }}
+                                            
+                    <div style="position: relative;">
+                        {{ form_widget(form.password) }}
+                        <p href="#" class="btn btn-dark password-view position-absolute end-0 top-0 " data-visible="false"><i class="bi bi-eye-slash-fill"></i></p>
+                    </div>
+
+
+                        {{ form_widget(form.isVerified) }}
+                        {{ form_widget(form.createdAt) }}
+                        {{ form_widget(form.name) }}
+                        {{ form_widget(form.lastname) }}
+                
+                        {% if user and 'SF' in user.roles %}
+                            {# Masquer le champ et son libellé #}
+                            <div class="d-none">
+                                {{ form_label(form.codeVrp) }}
+                                {{ form_widget(form.codeVrp) }}
+                            </div>
+                        {% else %}
+                            {{ form_widget(form.codeVrp) }}
+                        {% endif %}
+
+                        {{ form_widget(form.roles) }}
+                        <button type="submit" class="btn btn-primary">Mettre à jour</button>
+                        {{ form_end(form) }}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>  
+
+<style>
+    .offcanvas-body a, .nav-pills a {
+    color: #f2f2f2;
+    text-align: left;
+    text-decoration: none;
+    }
+    .offcanvas-body a:hover, .nav-pills a:hover {
+    background-color: #ddd !important;
+    color: black !important;
+    }
+
+    .card:hover {
+        background-color: initial !important;
+        box-shadow: none !important;
+    }
+
+    .nav-link.active{
+      color: #cecece !important;
+        background-color: #7b8da8 !important;
+    }
+
+    .card{
+        height: 100% !important;
+        opacity: 1 !important;
+    }
+    html,body{
+        height:100%;
+    }
+
+    hr{
+    margin: 1rem 0;
+    color: white;
+    border: 0;
+        border-top-width: 0px;
+        border-top-style: none;
+        border-top-color: currentcolor;
+    border-top: var(--bs-border-width) solid;
+    opacity: 0.25;
+    }
+    .offcanvas-head-title{
+        display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    }
+</style>
+{% endblock %}

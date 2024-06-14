@@ -1,0 +1,32 @@
+{# templates/locked.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Dossier verrouillé{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+
+    
+{% endblock %}
+
+{% block body %}
+
+    <div class="alert-container alert alert-danger" role="alert" >
+       <p style="font-size: 18px;">
+            <i class="bi bi-person-lock"></i> Ce dossier est actuellement en cours de modification par l'utilisateur {{ locker.name ?? '' }} {{ locker.lastName ?? '' }}.
+
+       </p><br>
+       
+
+      <a href="{{ path('app_index') }}" id="backHomeDude" style="font-size: 18px;"class='btn btn-dark'><i class="bi bi-arrow-left-circle"></i> Revenir sur la page d'accueil</a>
+    </div> 
+
+
+
+
+
+    {{ include('dossiers/_formBlur.html.twig') }}
+
+{% endblock %}

@@ -1,0 +1,156 @@
+<turbo-stream action="replace" target="successCreateFile">
+    <template>
+
+
+{{ form_start(formDossier, {'attr': {'class': 'dossier-generated '}}) }}
+    {{ form_errors(formDossier) }}
+
+   <div class="d-flex w-100 justify-content-center align-items-center  flex-column" id="successCreateFile">
+        <div class="d-flex flex-column divDossierMargin w-100" style="background-color: #ffffff38;  max-width: 900px; border-radius: 25px;">
+            <div class="justify-content-between d-flex">
+                <a href="{{ path('app_index')}}" data-turbo-action="prefetch" class="d-flex align-items-center justify-content-center btnBack ">
+                    <img class="btnBack btn" src="{{ asset('build/images/back-button.svg') }}" alt="Bouton Retour">
+                </a>
+                <h1 style="color: #fff; text-decoration: underline; text-align: center;" class="m-4">Création de dossier</h1>
+                    <div class="d-flex align-items-center justify-content-center me-4">
+                    <button class="btn btn-primary" style="height: 45px;  width: 125px;">{{ button_label|default('Enregistrer') }}</button>
+                </div>
+   
+                {% for message in app.flashes('success') %}
+                    <div class="alert alert-success">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+              
+            
+            </div>
+            <div class="form-group d-flex flex-column align-items-center h-100 form-creation" style="justify-content: space-evenly;">
+                {% if errors is defined %}
+                    {% for error in errors %}
+                        <li class="text-white">{{ error.message }}</li>
+                    {% endfor %}
+                {% endif %}
+                {{ form_row(formDossier._token) }}
+                {{ form_errors(formDossier._token) }}
+               {% if 'SF' in app.user.roles %}
+                    <div class="d-flex justify-content-end align-items-center" style="align-self: end; padding-right: 1.2rem;">
+                        <p style="margin-right: 1rem;font-size: 18px;font-weight: bolder;" class="text-center mb-0 w-100">Assigner ce dossier à un vrp</p>
+                        {{ form_widget(formDossier.assignVrp, {'attr': {'class': 'form-control', 'placeholder': 'Ville','style':"height: 38px;"}}) }}
+                    </div>
+                {% endif %}
+
+                <div class="container h-100 mt-3">
+                        <div class="row h-100 flex-nowrap justify-content-center xsFlexColumn p-2">
+                            <div class="col-12 col-md-4 mb-4 d-flex flex-column justify-content-between xsAround align-items-center" style="height:250px;">
+
+                                {{ form_widget(formDossier.ville, {'attr': {'class': 'form-control', 'placeholder': 'Ville'}}) }}
+                                {{ form_errors(formDossier.ville, {'attr': {'class': 'bg-white'}}) }}
+                                {{ form_widget(formDossier.typeFeu, {'attr': {'class': 'form-control', 'placeholder': 'Type de feu'}}) }}
+                                {{ form_widget(formDossier.dateTir) }}
+                            </div>
+                            
+                            <div class="col-12 col-md-4 mb-4 d-flex flex-column justify-content-between xsAround xsMarginTop4 align-items-center" style="height:250px;">
+                                <select class="form-select mb-2" style="height: 42px !important;">
+                                    <option disabled selected>Département</option>
+                                    <option value="1">Gard</option>
+                                    <option value="2">Hérault</option>
+                                    <option value="3">Seine-et-Marne</option>
+                                    <option value="3">Ille Vilaine</option> 
+                                </select>
+
+
+                                {% include 'formDossier_component/nomPersonnel_widget.html.twig' %}
+                                
+                                <input type="text" class="form-control personnel invisible" placeholder="Nom du/des personnel(s) de tir">
+                            </div>
+                            <div class="col-12 col-md-4 mb-4 d-flex flex-column justify-content-between xsAround xsMargin align-items-center" style="height:250px;">
+                                <div class="input-group text-nowrap priceFil mb-2">
+                                    {{ form_widget(formDossier.montant, {'attr': {'class': 'form-control Montant-commande', 'placeholder': 'Montant'}}) }}
+                                    {{ form_errors(formDossier.montant, {'attr': {'style': 'background: white; text-align: center;'}}) }}
+
+                                </div>
+                                {{ form_widget(formDossier.nbPersonnel, {'attr': {'readonly': 'readonly', 'class': 'form-control mb-2', 'placeholder': 'Nombre personnel de tir'}}) }}
+                                <input type="text" class="form-control personnel invisible" placeholder="Nom du/des personnel(s) de tir"> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{{ form_end(formDossier) }}
+<style>
+    body{height:100vh !important}
+    div.mb-3.row {
+        display: none;
+    }
+    div.mb-3.row .form-control {
+        visibility: hidden;
+    }
+
+
+</style>
+
+<script>
+
+    flatpickr(".flatpickr-input", {
+
+        dateFormat: "Y-m-d",
+        minDate: new Date().fp_incr(30),      
+
+        
+        locale: {
+            firstDayOfWeek: 1, // Commence la semaine le lundi
+            weekdays: {
+                shorthand: ["dim", "lun", "mar", "mer", "jeu", "ven", "sam"],
+                longhand: [
+                    "dimanche",
+                    "lundi",
+                    "mardi",
+                    "mercredi",
+                    "jeudi",
+                    "vendredi",
+                    "samedi",
+                ],
+            },
+            months: {
+                shorthand: [
+                    "Janv",
+                    "Févr",
+                    "Mars",
+                    "Avr",
+                    "Mai",
+                    "Juin",
+                    "Juil",
+                    "Août",
+                    "Sept",
+                    "Oct",
+                    "Nov",
+                    "Déc",
+                ],
+                longhand: [
+                    "Janvier",
+                    "Février",
+                    "Mars",
+                    "Avril",
+                    "Mai",
+                    "Juin",
+                    "Juillet",
+                    "Août",
+                    "Septembre",
+                    "Octobre",
+                    "Novembre",
+                    "Décembre",
+                ],
+            },
+
+        }
+        // Ajoutez d'autres options Flatpickr selon vos besoins
+    });
+
+</script>
+
+    </template>
+</turbo-stream>

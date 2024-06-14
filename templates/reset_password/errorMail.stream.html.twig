@@ -1,0 +1,13 @@
+<turbo-stream action="prepend" target="Section-MailRequest">
+    <template>
+       
+    {% for message in app.flashes('danger') %}
+        <div class="alert alert-danger">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+        
+    </template>
+</turbo-stream>
+

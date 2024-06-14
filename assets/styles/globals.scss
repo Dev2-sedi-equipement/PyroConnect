@@ -1,0 +1,165 @@
+body {
+    background-attachment: fixed !important;
+
+    // Dégradé radial pour les navigateurs Firefox
+    @supports (-moz-appearance:none) {
+        background: radial-gradient(ellipse at 0% 100%, rgba(104, 128, 138, 0.4) 10%, rgba(138, 114, 76, 0) 40%);
+    }
+
+    // Dégradé linéaire pour tous les navigateurs
+    background: linear-gradient(to bottom, rgba(57, 173, 219, 0.25) 0%, rgba(42, 60, 87, 0.4) 100%);
+
+    // Dégradé linéaire en diagonale pour tous les navigateurs
+    @supports (-webkit-appearance:none) {
+        background: linear-gradient(-45deg, #b5262a 0%, #092756 100%);
+    }
+
+    /* Ajoutez d'autres propriétés CSS si nécessaire */
+}
+
+.invalid-feedback{
+    background-color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 0 !important;
+}
+
+.h-80{height: 80%;}
+.w-80{width: 80%;}
+
+.logo-titre{font-family: $glory;}
+
+.blue{background-color: $blue;}
+
+.w-85{width: 85% !important;}
+.w-90{width: 90% !important;}
+
+
+.card{background-color: $card !important;opacity: 0.9;
+    color: white !important; height: fit-content!important;
+    &:hover{background-color: $card !important;}
+    
+
+}
+// input options
+input[type="radio"]:checked + label {
+    filter: brightness(100%);
+}
+
+.fileTitle{font-weight: bold; text-decoration: underline; font-size: 36px; color: white;}
+
+.assignVrp{
+    font-family: $carrois;
+    font-size: 24px;
+}
+
+#ea-index-User,#ea-new-User{background: #fff !important;}
+
+
+// admin
+.errorRole{border: 1px solid red !important; box-shadow: 0 0 0 3 red !important;background-color: yellow;}
+
+.btnBack{
+    height:70px;
+    background: url("../images/back-button-hover.svg") !important;
+
+}
+.animatePress {
+    transform: scale(0.8);
+    transition: transform 2s; /* Animation de la transformation dure 2 secondes */
+}
+
+button:hover, a:hover, label.btn:hover, select:hover, input:hover{
+    transform: scale(1.02) !important;
+}
+
+
+
+.d-contents{display: contents;}
+
+.Opa {
+    transition: opacity 1.5s ease; /* Transition d'opacité sur une durée de 0.5 seconde avec une fonction d'accélération */
+}
+
+.success-style{
+
+    border: 2px solid green !important;
+    box-shadow: green 0px 0px 5px 0px !important;
+}
+.error-style{
+
+    border: 2px solid red!important;
+    box-shadow: red 0px 0px 5px 0px!important;
+}
+.text-modal{
+    background: #ccc;
+    text-align: center;
+    border-radius: 6px;
+}
+
+  
+  
+//navbar 
+@media only screen and (max-width: 767px) {
+.hide-navM{height: 56px;}
+
+.content-vrp,.content-sf{margin-top: 0px !important;}
+
+}
+
+@media (min-width: 360px) and (max-width: 767px) { 
+    .alertCreate{
+        position: fixed;
+        width: -moz-available;
+        top: 56px;
+
+    }
+
+}
+
+@media (min-width: 768px) { 
+    .alertCreate{
+        position: fixed;
+        width: -moz-available;
+        top: 0px;
+
+    }
+
+}
+/* related to css LABEL HOVER from here. */
+.label-optionsTri{
+    &:hover{
+        filter: brightness(100%) !important;
+    }
+    position: relative;
+    z-index: 0;
+    display: inline-block;
+    transition: 0.2s color;
+    &:hover {
+      color: #fff;
+    }
+    &::before {
+      z-index: -1;
+      position: absolute;
+      top: 0;
+      left: 0;
+      content: '';
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(-45deg, #b5262a 0%, #092756 100%);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: 0.3s transform ease-in-out;
+    }
+    &:hover::before {
+        color:white !important;
+        filter: brightness(100%);
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+  }

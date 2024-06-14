@@ -1,0 +1,52 @@
+
+.card-body-profil{
+    max-width: 810px;
+}
+@media (max-width: 768px) {
+    #navProfilTab{
+        width: 100%;
+  position: fixed;
+  top: 0;
+    }     
+
+}
+
+@media (min-width: 360px)and (max-width: 1099px) {
+    #navProfilPC{display: none!important;}
+    .main{
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media (min-width: 1100px) {
+    #navProfilTab{display: none!important;}
+    .main{
+        display: flex;
+        flex-direction: row !important;
+    }
+
+}
+.cardProfil{
+    &:hover {
+        background-color: transparent !important;
+        box-shadow: none !important;
+    }
+}
+
+@media (max-width: 740px) {
+    .card-body-profil{width: 100% !important;}
+
+}
+@media (max-width: 741px) {
+    .row-gap {
+        gap: 0.5rem;
+    }      
+
+}
+@include media-breakpoint-down(md) {
+    .card-body-profil{
+        padding: 0px;
+    }
+
+}

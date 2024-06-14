@@ -1,0 +1,10 @@
+<turbo-stream action="prepend" target="requestMail">
+    <template>
+        <div id="reset-password-error" class="alert alert-danger">
+            {% for message in app.flashes('reset_password_error') %}
+                {{ message }}
+            {% endfor %}
+        </div>
+    </template>
+</turbo-stream>
+

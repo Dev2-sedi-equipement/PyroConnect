@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Création Dossiers{% endblock %}
+
+
+
+{% block body %}
+
+    {% include 'Component/navbar/Desktop/navbar.html.twig' %}
+    {% include 'Component/navbar/Mobile/navbar.html.twig' %}
+
+    <section class="d-flex justify-content-center align-items-center flex-column h-100" >
+        {% for message in app.flashes('Le dossier a été créé avec succès.') %}
+            <div class="alert alert-success w-100 text-center text-bg-info" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+        {% for message in app.flashes('danger') %}
+            <div class="alert alert-danger w-100 text-center text-bg-info" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+        <div style="width: 90% !important;"id="createFile">
+            {{ include('Component/create-file.html.twig') }}
+        </div>
+    </section>
+
+
+    <style>body{height:100%;}</style>
+
+{% endblock %}

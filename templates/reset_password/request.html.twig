@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Réinitialiser votre mot de passe{% endblock %}
+
+{% block body %}
+
+<html class="h-100">
+    <section id="Section-MailRequest" class="d-flex justify-content-center align-items-center h-100 flex-column">
+        <div class="col-xl-6 col-lg-8 col-md-10 col-sm-10 d-flex justify-content-center">
+            <div class="" id="RequestCardMail">
+                <div id="requestMail" class="p-3">
+                    {# Affichage du formulaire Captcha #}
+                    {% include 'captcha/index.html.twig' %}
+                </div>
+
+            </div>
+        </div>
+    </section>
+</html>
+
+<script defer>
+
+    setTimeout(deleteNotification, 5000);
+    function deleteNotification() {
+        document.querySelector(".successAlert").remove();
+    }
+
+    function setupCloseButton() {
+        // Sélectionnez tous les boutons "closeNotification"
+        const closeButtons = document.querySelectorAll('.closeNotification');
+
+        // Ajoutez un gestionnaire d'événements à chaque bouton
+        closeButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Trouvez l'élément parent (l'alerte) du bouton
+                const alert = button.closest('.alert');
+
+                // Cachez l'alerte en lui ajoutant la classe 'd-none' (display: none)
+                alert.classList.add('d-none');
+            });
+        });
+    }
+
+    setupCloseButton(); // Appelez la fonction lors du chargement initial
+
+    // Ajoutez un écouteur d'événements pour les nouveaux ajouts Turbo
+    document.addEventListener('turbo:load', setupCloseButton);
+</script>
+
+{% endblock %}
