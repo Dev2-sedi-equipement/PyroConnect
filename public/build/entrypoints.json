@@ -1,0 +1,74 @@
+{
+  "entrypoints": {
+    "app": {
+      "js": [
+        "/build/runtime.js"
+      ]
+    },
+    "adminUser": {
+      "js": [
+        "/build/runtime.js"
+      ]
+    },
+    "navbarJs": {
+      "js": [
+        "/build/runtime.js"
+      ]
+    },
+    "modifyDossier": {
+      "js": [
+        "/build/runtime.js"
+      ]
+    },
+    "datepicker": {
+      "js": [
+        "/build/runtime.js"
+      ]
+    },
+    "navbar": {
+      "js": [
+        "/build/runtime.js"
+      ]
+    },
+    "personnelTirEdit": {
+      "js": [
+        "/build/runtime.js"
+      ]
+    },
+    "personnelTir": {
+      "js": [
+        "/build/runtime.js"
+      ]
+    },
+    "beforeUnload": {
+      "js": [
+        "/build/runtime.js"
+      ]
+    },
+    "personnelTirArchive": {
+      "js": [
+        "/build/runtime.js"
+      ]
+    },
+    "searchClient": {
+      "js": [
+        "/build/runtime.js"
+      ]
+    },
+    "createDossier": {
+      "js": [
+        "/build/runtime.js"
+      ]
+    },
+    "password-visible": {
+      "js": [
+        "/build/runtime.js"
+      ]
+    },
+    "noAccessFile": {
+      "js": [
+        "/build/runtime.js"
+      ]
+    }
+  }
+}
